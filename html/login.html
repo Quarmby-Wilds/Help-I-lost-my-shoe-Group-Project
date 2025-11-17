@@ -23,15 +23,12 @@
 
         <div class="grid-container">
             <div class="content-area">
-                <div class="login-item-1">
-                    <button id="signupBtn" onclick="showSection('signup')">Sign up</button>
-                </div>
 
                 <div class="login-item-2">
                     <section id="signup" style="display:none;">
                         <h2>Sign Up</h2>
 
-                        <form id="signupForm">
+                        <form id="signup-form">
                             <div class="row">
                                 <input type="text" name="firstname" placeholder="First Name">
                                 <input type="text" name="lastname" placeholder="Last Name">
@@ -47,6 +44,35 @@
 
                             <button type="submit">Submit</button>
                         </form>
+                        <div class="login-item-4">
+                    <p>Already have an account?</p>
+                    <button id="login-btn" class="clear-button-login" onclick="showSection('login')">Log in</button>
+                        </div>
+                    </section>
+
+                    <div id="results-page-login" style="display:none;">
+                    <div class="login-item-3">
+                        <div id="results-login"></div>
+                        <button onclick="location.href='../index.html'">Return to Home</button>
+                        <button onclick="location.href='dashboard.html'">Go To Dashboard</button>
+                        <button onclick="location.href='analysis.html'">Go To Analysis</button>
+                        <button onclick="location.href='summary.html'">Go To Summary</button>
+                    </div>
+                </div>
+
+                    <section id="login" style="display:block;">
+                        <h2>Login</h2>
+
+                        <form id="login-form">
+                            <input type="text" name="email" placeholder="Email">
+                            <input type="text" name="password" placeholder="Password">
+
+                            <button type="submit">Log in</button>
+                        </form>
+                        <div class="login-item-1">
+                    <p>Don't have an account?</p>
+                    <button id="signup-btn" class="clear-button-signup" onclick="showSection('signup')">Sign up</button>
+                        </div>
                     </section>
                 </div>
 
