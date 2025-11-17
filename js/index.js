@@ -60,39 +60,80 @@ window.onclick = function (event) {
 
 //// ---- SIGNUP ---- ////
 
-function showSection(section) {
-    const sections = document.querySelectorAll(".collection-section");
-    sections.forEach((s) => (s.style.display = "none"));
-    document.getElementById(section).style.display = "block";
+function showSection(sectionName) {
 
-    const buttons = document.querySelectorAll('p[align="center"] button');
-    buttons.forEach((b) => b.classList.remove("active"));
-    event.target.classList.add("active");
+    const loginSection = document.getElementById("login");
+    const signupSection = document.getElementById("signup");
+
+    loginSection.style.display = "none";
+    signupSection.style.display = "none";
+
+    document.getElementById(sectionName).style.display = "block";
 }
 
-const signupButton = document.getElementById("signupBtn");
-const signupForm = document.getElementById("signupForm");
+const signupButton = document.getElementById("signup-btn");
+const signupForm = document.getElementById("signup-form");
 const resultsList = document.getElementById("results");
 
-signupForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+if (signupForm) {
+    signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const formData = new FormData(signupForm);
-    const data = {};
+        const formData = new FormData(signupForm);
+        const data = {};
 
-    resultsList.innerHTML = "";
+        resultsList.innerHTML = "";
 
-    formData.forEach((value, name) => {
-        data[name] = value;
-        resultsList.append(`${name}: ${value}`);
-        resultsList.append(document.createElement("br"));
+        formData.forEach((value, name) => {
+            data[name] = value;
+            resultsList.append(`${name}: ${value}`);
+            resultsList.append(document.createElement("br"));
+        });
+
+        localStorage.setItem("signupData", JSON.stringify(data));
+
+        document.getElementById("signup").style.display = "none";
+
+        document.getElementById("results-page").style.display = "block";
     });
+}
 
-    localStorage.setItem("signupData", JSON.stringify(data));
+//// ---- LOGIN ---- ////
 
-    document.getElementById("signup").style.display = "none";
+function showSection(sectionName) {
 
-    signupButton.style.display = "none";
+    const loginSection = document.getElementById("login");
+    const signupSection = document.getElementById("signup");
 
-    document.getElementById("results-page").style.display = "block";
-});
+    loginSection.style.display = "none";
+    signupSection.style.display = "none";
+
+    document.getElementById(sectionName).style.display = "block";
+}
+
+const loginButton = document.getElementById("login-btn");
+const loginForm = document.getElementById("login-form");
+const resultsListLogin = document.getElementById("results-login");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(loginForm);
+        const data = {};
+
+        resultsList.innerHTML = "";
+
+        formData.forEach((value, name) => {
+            data[name] = value;
+            resultsList.append(`${name}: ${value}`);
+            resultsList.append(document.createElement("br"));
+        });
+
+        localStorage.setItem("loginData", JSON.stringify(data));
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("results-page-login").style.display = "block";
+    });
+}
