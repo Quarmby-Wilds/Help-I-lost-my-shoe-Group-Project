@@ -7,7 +7,7 @@ body {
     text-align: center;
     font-family: "Noto Serif JP", Source Sans Pro, Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     height: 100%;
-    margin: 0px;
+    margin: 0px auto;
     background-color: #739090;
 }
 
@@ -77,11 +77,12 @@ footer {
     padding: 10px;
     padding-top: 50px;
     padding-bottom: 50px;
-    text-align: center;
+    text-align: right;
     color: #D9C7A3;
     position: relative;
     z-index: 10;
     margin-bottom: 0px;
+    margin-right: 50px;
 }
 
 .footer-links {
@@ -467,4 +468,41 @@ footer {
     grid-row: 1;
     align-items: center;
     padding-left: 45px;
+}
+
+.form-grid {
+    display: grid;
+    max-width: fit-content;
+    margin: 30px auto 5px;
+    border: 1px;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(250, 247, 240, 0.92);
+    font-family: "Playfair Display Italic", serif;
+}
+
+.form-grid input, select, button{
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    font-family: "Playfair Display Italic", serif;
+    margin: 1px;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+    display: inline-block;
+    font-family: "Playfair Display Italic", serif;
+    margin: 10px;
+    padding: 5px;
+    color: white;
+    background-color: #39606A;
+    border-radius: 10px;
+}
+
+.file-upload:hover {
+    background-color: #2A444B;
 }
