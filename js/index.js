@@ -164,6 +164,7 @@ function showSection(sectionName) {
 
     document.getElementById(sectionName).style.display = "block";
 }
+//// ---- SIGNUP ---- ////
 
 const signupButton = document.getElementById("signup-btn");
 const signupForm = document.getElementById("signup-form");
@@ -172,6 +173,14 @@ const resultsList = document.getElementById("results");
 if (signupForm) {
     signupForm.addEventListener("submit", function (e) {
         e.preventDefault();
+
+         const password = document.querySelector('input[name="password"]').value;
+        const passwordConfirm = document.querySelector('input[name="passwordconfirm"]').value;
+
+        if (password !== passwordConfirm) {
+            alert("Passwords do not match!");
+            return;
+        }
 
         const formData = new FormData(signupForm);
         const data = {};
@@ -238,11 +247,51 @@ if (loginForm) {
     });
 }
 
-const slider = document.getElementById('slider');
-    const output = document.getElementById('slider-value');
+const updateForm = document.querySelector("form.form-grid");
+const resultsDashboard = document.getElementById("results-page-dashboard");
+const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
 
-    output.textContent = slider.value; 
 
-    slider.addEventListener('input', () => {
-        output.textContent = slider.value;
+if (slider && sliderValue) {
+    sliderValue.textContent = slider.value;
+    
+    slider.addEventListener("input", function() {
+        sliderValue.textContent = this.value;
     });
+}
+
+if (updateForm) {
+    updateForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(updateForm);
+        const data = {};
+
+        if (resultsDashboard) {
+            resultsDashboard.innerHTML = "";
+
+            const dataTypesDiv = document.getElementById("data-types");
+            const checkedBoxes = dataTypesDiv.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedDataTypes = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+
+            if (selectedDataTypes.length > 0) {
+                resultsDashboard.append(`datatype: ${selectedDataTypes.join(' ')}`);
+                resultsDashboard.appendChild(document.createElement("br"));
+                data['datatype'] = selectedDataTypes.join(' ');
+            }
+
+            formData.forEach((value, name) => {
+                if (!['graphs', 'headcount', 'coa'].includes(name)) {
+                    data[name] = value;
+                    resultsDashboard.append(`${name}: ${value}`);
+                    resultsDashboard.appendChild(document.createElement("br"));
+                }
+            });
+
+            localStorage.setItem("updatePreferences", JSON.stringify(data));
+            updateForm.style.display = "none";
+            document.getElementById("results-page-dashboard").style.display = "block";
+        }
+    });
+}
