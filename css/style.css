@@ -260,6 +260,10 @@ footer {
     margin: 1px;
 }
 
+.dashboard-images {
+    width: 100%;
+}
+
 .submit {
     color: #39606A;
 }
