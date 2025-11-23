@@ -235,6 +235,50 @@ footer {
     grid-column: 3;
     grid-row: 3;
 }
+.dashboard-item-7 {
+    grid-column: 2;
+    grid-row: 3;
+    border: 1px;
+    font-family: "Playfair Display Italic", serif;
+}
+
+.dashboard-item-7 input,
+.dashboard-item-7 label {
+    color: #364845;
+    border: 1px;
+    border-radius: 5px;
+    /* font-family: "Playfair Display Italic", serif; */
+    margin: 1px;
+}
+
+.dashboard-images {
+    width: 100%;
+}
+
+.submit {
+    color: #39606A;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+    display: inline-block;
+    font-family: "Playfair Display Italic", serif;
+    background-color: #39606A;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.file-upload:hover {
+    background-color: #2A444B;
+}
 
 .dashboard-item-1,
 .dashboard-item-2,

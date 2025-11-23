@@ -39,7 +39,7 @@ function search() {
 //// ---- Display result ---- ////
 
 // - Display summary - //
-function display(){
+function display() {
     const getSummary1 = document.getElementById("summary-1");
     const getSummary2 = document.getElementById("summary-2");
 
@@ -54,75 +54,62 @@ function display(){
     const getResource3 = document.getElementById("resource-3");
     const getResource4 = document.getElementById("resource-4");
     const getResource5 = document.getElementById("resource-5");
-    
 
     const getNavLogin = document.getElementById("nav-login");
-    const getNavLogout = document.getElementById("nav-logout")
+    const getNavLogout = document.getElementById("nav-logout");
 
-    const getLoginData = localStorage.getItem("loginData")
-    const getSignUpData = localStorage.getItem("signupData")
-    if (getLoginData !== null || getSignUpData !== null){
+    const getLoginData = localStorage.getItem("loginData");
+    const getSignUpData = localStorage.getItem("signupData");
+    if (getLoginData !== null || getSignUpData !== null) {
         getNavLogin.hidden = true;
         getNavLogout.hidden = false;
-        if(getSummary1 && getSummary2){
+        if (getSummary1 && getSummary2) {
             getSummary1.hidden = false;
             getSummary2.hidden = true;
-        }
-        else if (getAnalysis1 && getAnalysis2 && getAnalysis3 && getAnalysis4 && getAnalysis5){
+        } else if (getAnalysis1 && getAnalysis2 && getAnalysis3 && getAnalysis4 && getAnalysis5) {
             getAnalysis5.hidden = true;
             getAnalysis1.hidden = false;
             getAnalysis2.hidden = false;
             getAnalysis3.hidden = false;
             getAnalysis4.hidden = false;
-        }
-        else if (getResource1 && getResource2 && getResource3 && getResource4 && getResource5){
+        } else if (getResource1 && getResource2 && getResource3 && getResource4 && getResource5) {
             getResource5.hidden = true;
             getResource1.hidden = false;
             getResource2.hidden = false;
             getResource3.hidden = false;
             getResource4.hidden = false;
+        } else {
+            console.log("No Analysis, Summary or Resources was found on this page. ");
         }
-        else{
-            console.log("No Analysis, Summary or Resources was found on this page. ")
-        }
-    }
-    else{
+    } else {
         getNavLogin.hidden = false;
         getNavLogout.hidden = true;
-        if(getSummary1 && getSummary2){
+        if (getSummary1 && getSummary2) {
             getSummary1.hidden = true;
             getSummary2.hidden = false;
-
-        }
-        else if (getAnalysis1 && getAnalysis2 && getAnalysis3 && getAnalysis4 && getAnalysis5) {
+        } else if (getAnalysis1 && getAnalysis2 && getAnalysis3 && getAnalysis4 && getAnalysis5) {
             getAnalysis5.hidden = false;
             getAnalysis1.hidden = true;
             getAnalysis2.hidden = true;
             getAnalysis3.hidden = true;
             getAnalysis4.hidden = true;
-            
-        }
-        else if (getResource1 && getResource2 && getResource3 && getResource4 && getResource5){
+        } else if (getResource1 && getResource2 && getResource3 && getResource4 && getResource5) {
             getResource5.hidden = false;
             getResource1.hidden = true;
             getResource2.hidden = true;
             getResource3.hidden = true;
             getResource4.hidden = true;
-        }
-        else{
-            console.log("No Analysis, Summary or Resources was found on this page. ")
+        } else {
+            console.log("No Analysis, Summary or Resources was found on this page. ");
         }
     }
-
-
 }
-
 
 //// ---- Logout ---- ////
 
 // - Logout - //
 
-function logout(){
+function logout() {
     localStorage.clear();
     location.reload();
 }
@@ -155,7 +142,6 @@ window.onclick = function (event) {
 //// ---- SIGNUP ---- ////
 
 function showSection(sectionName) {
-
     const loginSection = document.getElementById("login");
     const signupSection = document.getElementById("signup");
 
@@ -207,7 +193,6 @@ if (signupForm) {
 //// ---- LOGIN ---- ////
 
 function showSection(sectionName) {
-
     const loginSection = document.getElementById("login");
     const signupSection = document.getElementById("signup");
 
@@ -249,7 +234,6 @@ if (loginForm) {
 
 const updateForm = document.querySelector("form.form-grid");
 const resultsDashboard = document.getElementById("results-page-dashboard");
-const slider = document.getElementById("slider");
 const sliderValue = document.getElementById("slider-value");
 
 
@@ -295,3 +279,11 @@ if (updateForm) {
         }
     });
 }
+const slider = document.getElementById("slider");
+const output = document.getElementById("slider-value");
+
+output.textContent = slider.value;
+
+slider.addEventListener("input", () => {
+    output.textContent = slider.value;
+});
