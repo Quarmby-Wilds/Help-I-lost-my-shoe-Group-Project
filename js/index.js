@@ -234,6 +234,7 @@ if (loginForm) {
 
 const updateForm = document.querySelector("form.form-grid");
 const resultsDashboard = document.getElementById("results-page-dashboard");
+const slider = document.getElementById("slider");
 const sliderValue = document.getElementById("slider-value");
 
 
@@ -279,7 +280,6 @@ if (updateForm) {
         }
     });
 }
-const slider = document.getElementById("slider");
 const output = document.getElementById("slider-value");
 
 output.textContent = slider.value;
